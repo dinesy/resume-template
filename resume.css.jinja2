@@ -1,7 +1,7 @@
-@font-face { font-family: "mac-Clbr"; font-display: swap; src: local("Calibri"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri.woff2"); }
-@font-face { font-family: "mac-Clbr-Bld"; font-display: swap; src: local("Calibri-Bold"), local("Calibri Bold"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-Bold.woff2"); }
-@font-face { font-family: "mac-Clbr-BldItlc"; font-display: swap; src: local("Calibri-BoldItalic"), local("Calibri Bold Italic"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-BoldItalic.woff2"); }
-@font-face { font-family: "mac-Clbr-Itlc"; font-display: swap; src: local("Calibri-Italic"), local("Calibri Italic"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-Italic.woff2"); }
+@font-face { font-family: "Calibri"; font-display: swap; src: local("Calibri"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri.woff2"); }
+@font-face { font-family: "Calibri-Bld"; font-display: swap; src: local("Calibri-Bold"), local("Calibri Bold"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-Bold.woff2"); }
+@font-face { font-family: "Calibri-BldItlc"; font-display: swap; src: local("Calibri-BoldItalic"), local("Calibri Bold Italic"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-BoldItalic.woff2"); }
+@font-face { font-family: "Calibri-Itlc"; font-display: swap; src: local("Calibri-Italic"), local("Calibri Italic"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-Italic.woff2"); }
 /* @font-face { font-family: "win-Clbr"; font-display: swap; src: local("Calibri"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri.woff2"); } */
 /* @font-face { font-family: "win-Clbr-Bld"; font-display: swap; src: local("Calibri-Bold"), local("Calibri Bold"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-Bold.woff2"); } */
 /* @font-face { font-family: "win-Clbr-BldItlc"; font-display: swap; src: local("Calibri-BoldItalic"), local("Calibri Bold Italic"),url("https://www.icloud.com/applications/ix/14E131/static-assets/14E131/fonts/Calibri-BoldItalic.woff2"); } */
@@ -12,9 +12,8 @@ body {
 }
 
 .resume {
-    margin: 0.5in 1.5in;
-    line-height:  1.3;
-    font-size: 10pt;
+    margin: 0in .25in;
+    font-size: 9.5pt;
 }
 
 div.name {
@@ -30,7 +29,7 @@ div.contact-info {
 
 div.tagline {
     text-align: center;
-    font-size:  16pt;
+    font-size:  15pt;
     font-weight: bold;
     margin-top: 8pt;
     letter-spacing: 5%;
@@ -38,27 +37,28 @@ div.tagline {
 
 div.summary {
     text-align: justify;
+    line-height: 1.3;
 }
 
-.section {
-    margin-top: 4pt;
+div.section {
+    margin-top: 10px;
 }
 
 div.section-title {
     text-align: center;
-    font-size: 14pt;
+    font-size: 13pt;
     font-weight: bold;
     text-transform: uppercase;
+
     line-height: 1.2;
     letter-spacing: 5%;
 }
 
 div.skills {
-    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 div.skills-group {
-    //padding-bottom: 40px;
     line-height: 1.5;
 }
 
@@ -69,7 +69,7 @@ div.skills-group .group-name {
 
 div.skills-group .skills-list {
     position: absolute;
-    left: 3in;
+    left: 11em;
 }
 
 div.skills-group .skills-list .skill-item {
@@ -77,7 +77,8 @@ div.skills-group .skills-list .skill-item {
 }
 
 div.employer-id {
-    font-size: 13pt;
+    font-size: 12pt;
+    letter-spacing: 5%;
     text-transform: uppercase;
 }
 
@@ -87,7 +88,6 @@ div.employer-id .employer-name {
 
 div.employer-id .employer-location {
     float: right;
-    //padding-right: 0.25em;
 }
 
 div.employer-id .employer-date {
@@ -96,13 +96,17 @@ div.employer-id .employer-date {
     letter-spacing: 5%;
 }
 
+div.experience-employer .experience-position {
+    padding-top: 1pt;
+}
+
 div.experience-employer .experience-positions {
     padding-left: 1.5em;
     padding-bottom: 1.5em;
 }
 
 div.position-id {
-    font-size: 12pt;
+    font-size: 11pt;
     text-transform: uppercase;
     letter-spacing: 5%;
 }
@@ -115,15 +119,36 @@ div.position-id .position-date {
     //float: right;
 }
 
+div.position-details .details-group {
+    margin-top: 1pt;
+}
 div.position-details .details-group .group-name {
-    text-transform: uppercase;
     font-size: 11pt;
+    letter-spacing: 5%;
+    text-transform: uppercase;
 }
 
 div.position-details .details-group ul {
-    font-size: 10pt;
     margin-block-start: 0;
-    list-style-type: disc;
+    margin-block-end: 0pt;
+    padding-bottom: 3pt;
+
+    //list-style-type: disc;
+}
+
+div.position-details .details-group ul li {
+    padding-top: 3pt;
+    padding-bottom: 1pt;
+    position: relative;
+    list-style: none;
+    line-height: 1.1;
+}
+
+div.position-details .details-group ul li::before {
+    content: "•";
+    position: absolute;
+    left: -10px;
+    top: 1;
 }
 
 div.education-item {
