@@ -1,22 +1,19 @@
-{% macro render_details(details) %}
-    {% if details is tuple %}
-    <div class="details-group">
-    <div class="group-name">{{ details[0] }}</div>
-    {{ render_details(details[1]) }}
-    </div>
-    {% elif details is list %}
-    {% for detail in details %}
-        {% if detail and detail is not list %}
-            {% if detail is not tuple %}{% if loop.first %}<ul>{% endif %}<li>{% endif %}
+{%- macro render_details(details) %}
+    {%- if details is tuple %}<div class="details-group">
+    <div class="group-name">{{ details[0] }}</div>{{ render_details(details[1]) }}</div>
+    {%- elif details is list -%}
+    {%- for detail in details -%}
+        {%+ if detail and detail is not list +%}
+            {% if detail is not tuple %}{% if loop.first %}<ul>{% endif %}<li>{% endif -%}
             {{ render_details(detail) }}
-            {% if loop.nextitem is list %}{{ render_details(loop.nextitem) }}{% endif %}
-            {% if detail is not tuple %}</li>{% if loop.last %}</ul>{% endif %}{% endif %}
-        {% endif %}
-    {% endfor %}
-    {% else %}
+            {%- if loop.nextitem is list %}{{ render_details(loop.nextitem) }}{% endif -%}
+            {%- if detail is not tuple %}</li>{% if loop.last %}</ul>{% endif %}{% endif -%}
+        {% endif -%}
+    {% endfor -%}
+    {%- else -%}
     {{ details|convert_style }}
-    {% endif %}
-{% endmacro %}
+    {%- endif +%}
+{%- endmacro -%}
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -44,20 +41,20 @@
     </div>
     <div class="section skills">
         <div class="section-title">CORE COMPETENCIES</div>
-        {% for category, skills in resume.skills|prep_details %}
+        {%- for category, skills in resume.skills|prep_details %}
         <div class="skills-group">
             <span class="group-name">{{ category }}: </span>
             <span class="skills-list">
-                {% for skill in skills %}
+                {%- for skill in skills %}
                     <span class="skill-item">{{ skill }}{{" | " if not loop.last else ""}}</span>
-                {% endfor %}
+                {%- endfor %}
             </span>
         </div>
-        {% endfor %}
+        {%- endfor %}
     </div>
     <div class="section experience">
         <div class="section-title">PROFESSIONAL EXPERIENCE</div>
-            {% for employer in resume.experience %}
+            {%- for employer in resume.experience %}
         <div class="experience-employer">
             <div class="employer-id">
                 <span class="employer-name">{{ employer.company }}</span>
@@ -68,7 +65,7 @@
                 <span class="employer-location">{{ employer.location }}  &mdash;</span>
             </div>
             <div class="experience-positions">
-                {% for position in employer.positions %}
+                {%- for position in employer.positions %}
                 <div class="experience-position">
                     <div class="position-id">
                         <span class="position-title">{{ position.title }}</span>
@@ -77,25 +74,23 @@
                             ({%- if position.start_date -%}{{ position.start_date }}{{ dash() }}{%- endif -%}
                                 {%- if position.end_date -%}{{ dash() }}{{ position.end_date }}{%- endif -%})</span>
                     </div>
-                    <div class="position-details">
-                    {{ render_details(position.details|prep_details) }}
-                    </div>
+                    <div class="position-details">{{ render_details(position.details|prep_details) }}</div>
                 </div>
-                {% endfor %}
+                {% endfor -%}
             </div>
         </div>
-        {% endfor %}
+        {% endfor -%}
     </div>
     <div class="section education">
         <div class="section-title">Education</div>
-        {% for item in resume.education %}
+        {%- for item in resume.education %}
         <div class="education-item">
             <span class="education-school">{{ item.school }}</span>
             <span class="education-location">{{ item.location }}</span>
             <span class="education-degree">{{ item.degree }}</span>
             <span class="education-year">{{ item.year }}</span>
         </div>
-        {% endfor %}
+        {% endfor -%}
     </div>
     </body>
 </html>
