@@ -1,0 +1,100 @@
+{% macro render_details(details) %}
+    {% if details is tuple %}
+    <div class="details-group">
+    <div class="group-name">{{ details[0] }}</div>
+    {{ render_details(details[1]) }}
+    </div>
+    {% elif details is list %}
+    {% for detail in details %}
+        {% if detail and detail is not list %}
+            {% if detail is not tuple %}{% if loop.first %}<ul>{% endif %}<li>{% endif %}
+            {{ render_details(detail) }}
+            {% if loop.nextitem is list %}{{ render_details(loop.nextitem) }}{% endif %}
+            {% if detail is not tuple %}</li>{% if loop.last %}</ul>{% endif %}{% endif %}
+        {% endif %}
+    {% endfor %}
+    {% else %}
+    {{ details|convert_style }}
+    {% endif %}
+{% endmacro %}
+<html>
+    <head>
+        <title>Resume</title>
+        <link rel="stylesheet" href="/css">
+    </head>
+    <body class="resume">
+    <div class="section personal">
+        <div class="item name">
+            {{ resume.personal.name }}
+        </div>
+        <div class="contact-info">
+            <span class="item email">{{ resume.personal.contact.email }}</span> &#9679;
+            <span class="item phone">{{ resume.personal.contact.phone }}</span> &#9679;
+            <span class="item linkedin">{{ resume.personal.contact.urls.linkedin }}</span> &#9679;
+            <span class="item address">{{ resume.personal.contact.address }}</span>
+        </div>
+    </div>
+    <div class="tagline">
+        {{ resume.personal.tagline }}
+    </div>
+    <div class="section summary">
+        {{ resume.personal.summary|convert_style }}
+    </div>
+    <div class="section skills">
+        <div class="section-title">CORE COMPETENCIES</div>
+        {% for category, skills in resume.skills|prep_details %}
+        <div class="skills-group">
+            <span class="group-name">{{ category }}: </span>
+            <span class="skills-list">
+                {% set bar = joiner(" | ") %}
+                {% for skill in skills %}
+                    {{ bar() }}<span class="skill-item">{{ skill }}</span>
+                {% endfor %}
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="section experience">
+        <div class="section-title">PROFESSIONAL EXPERIENCE</div>
+            {% for employer in resume.experience %}
+        <div class="experience-employer">
+            <div class="employer-id">
+                <span class="employer-name">{{ employer.company }}</span>
+                <span class="employer-date">
+                    {%- set dash = joiner("-") -%}
+                    {%- if employer.start_date -%}{{ employer.start_date }}{{ dash() }}{%- endif -%}
+                        {%- if employer.end_date -%}{{ dash() }}{{ employer.end_date }}{%- endif -%}</span>
+                <span class="employer-location">{{ employer.location }}  &mdash;</span>
+            </div>
+            <div class="experience-positions">
+                {% for position in employer.positions %}
+                <div class="experience-position">
+                    <div class="position-id">
+                        <span class="position-title">{{ position.title }}</span>
+                        <span class="position-date">
+                            {%- set dash = joiner("-") -%}
+                            ({%- if position.start_date -%}{{ position.start_date }}{{ dash() }}{%- endif -%}
+                                {%- if position.end_date -%}{{ dash() }}{{ position.end_date }}{%- endif -%})</span>
+                    </div>
+                    <div class="position-details">
+                    {{ render_details(position.details|prep_details) }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="section education">
+        <div class="section-title">Education</div>
+        {% for item in resume.education %}
+        <div class="education-item">
+            <span class="education-school">{{ item.school }}</span>
+            <span class="education-location">{{ item.location }}</span>
+            <span class="education-degree">{{ item.degree }}</span>
+            <span class="education-year">{{ item.year }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    </body>
+</html>
