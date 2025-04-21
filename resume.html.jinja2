@@ -48,9 +48,8 @@
         <div class="skills-group">
             <span class="group-name">{{ category }}: </span>
             <span class="skills-list">
-                {% set bar = joiner(" | ") %}
                 {% for skill in skills %}
-                    {{ bar() }}<span class="skill-item">{{ skill }}</span>
+                    <span class="skill-item">{{ skill }}{{" | " if not loop.last else ""}}</span>
                 {% endfor %}
             </span>
         </div>
