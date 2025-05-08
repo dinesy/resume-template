@@ -40,17 +40,19 @@
         {{ resume.personal.summary|convert_style }}
     </div>
     <div class="section skills">
-        <div class="section-title">CORE COMPETENCIES</div>
+    <div class="section-title">CORE COMPETENCIES</div>
+    <table><tbody>
         {%- for category, skills in resume.skills|prep_details %}
-        <div class="skills-group">
-            <span class="group-name">{{ category }}: </span>
-            <span class="skills-list">
+        <tr class="skills-group">
+            <td class="group-name">{{ category }}: </td>
+            <td class="skills-list">
                 {%- for skill in skills %}
                     <span class="skill-item">{{ skill }}{{" | " if not loop.last else ""}}</span>
                 {%- endfor %}
-            </span>
-        </div>
+            </td>
+        </tr>
         {%- endfor %}
+    </tbody></table>
     </div>
     <div class="section experience">
         <div class="section-title">PROFESSIONAL EXPERIENCE</div>
