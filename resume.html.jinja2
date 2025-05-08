@@ -69,10 +69,12 @@
                 <div class="experience-position">
                     <div class="position-id">
                         <span class="position-title">{{ position.title }}</span>
-                        <span class="position-date">
+                        {%- if position.start_date or position.end_date -%}
+                        &nbsp;<span class="position-date">
                             {%- set dash = joiner("-") -%}
                             ({%- if position.start_date -%}{{ position.start_date }}{{ dash() }}{%- endif -%}
                                 {%- if position.end_date -%}{{ dash() }}{{ position.end_date }}{%- endif -%})</span>
+                        {%- endif -%}
                     </div>
                     <div class="position-details">{{ render_details(position.details|prep_details) }}</div>
                 </div>
