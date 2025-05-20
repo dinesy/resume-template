@@ -47,7 +47,7 @@
             <td class="group-name">{{ category }}: </td>
             <td class="skills-list">
                 {%- for skill in skills %}
-                    <span class="skill-item">{{ skill }}{{" | " if not loop.last else ""}}</span>
+                    <span class="skill-item">{{ skill }}{{" |" if not loop.last else ""}}</span>
                 {%- endfor %}
             </td>
         </tr>
