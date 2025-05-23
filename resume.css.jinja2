@@ -14,7 +14,7 @@ body {
 }
 
 .resume {
-    margin: 0in .25in;
+    margin: 0pt 18pt;
     font-size: 9.5pt;
     font-family: Calibri, sans-serif;
 }
@@ -44,7 +44,11 @@ div.summary {
 }
 
 div.section {
-    margin-top: 10px;
+    margin-top: 9pt;
+}
+
+div.section:first-of-type {
+    margin-top: initial;
 }
 
 div.section-title {
@@ -82,7 +86,6 @@ div.employer-id {
     font-size: 12pt;
     letter-spacing: var(--title-letter-spacing);
     text-transform: uppercase;
-    margin-bottom: -5pt;
 }
 
 div.employer-id .employer-name {
@@ -99,20 +102,26 @@ div.employer-id .employer-date {
     letter-spacing: var(--title-letter-spacing);
 }
 
+.experience-employer {
+    margin-bottom: 14pt;
+}
+
 div.experience-employer .experience-position {
-    margin-top: 2pt;
+    margin-top: 8pt;
+}
+
+div.experience-employer .experience-position:first-of-type {
+    margin-top: 1pt;
 }
 
 div.experience-employer .experience-positions {
-    margin-left: 1.5em;
-    margin-bottom: 1.5em;
+    margin-left: 14pt;
 }
 
 div.position-id {
     font-size: 11pt;
     text-transform: uppercase;
     letter-spacing: var(--title-letter-spacing);
-    margin-top: 6pt;
 }
 
 div.position-id .position-title {
@@ -120,6 +129,9 @@ div.position-id .position-title {
 }
 
 div.position-id .position-date {
+}
+
+.experience-position .position-details {
 }
 
 div.position-details .details-group {
@@ -130,12 +142,11 @@ div.position-details .details-group .group-name {
     font-size: 11pt;
     letter-spacing: var(--title-letter-spacing);
     text-transform: uppercase;
-    margin-bottom: -3pt;
 }
 
 div.position-details .details-group ul {
-    margin-top: -1pt;
-    margin-bottom: 1pt;
+    margin-top: initial;
+    margin-bottom: initial;
 
     /* list-style-type: disc; */
 }
@@ -151,7 +162,7 @@ div.position-details .details-group ul li {
 div.position-details .details-group ul li::before {
     content: "•";
     position: absolute;
-    left: -10px;
+    left: -7pt;
     top: 0.1%;
 }
 
