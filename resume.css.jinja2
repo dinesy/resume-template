@@ -19,18 +19,18 @@ body {
     font-family: Calibri, sans-serif;
 }
 
-div.name {
+.name {
     font-size: 18pt;
     font-weight: bold;
     text-align: center;
 }
 
-div.contact-info {
+.contact-info {
     text-align: center;
     font-size: 8pt;
 }
 
-div.tagline {
+.tagline {
     text-align: center;
     font-size:  15pt;
     font-weight: bold;
@@ -38,20 +38,20 @@ div.tagline {
     letter-spacing: var(--title-letter-spacing);
 }
 
-div.summary {
+.summary {
     text-align: justify;
     line-height: 1.3;
 }
 
-div.section {
+.section {
     margin-top: 9pt;
 }
 
-div.section:first-of-type {
+.section:first-of-type {
     margin-top: initial;
 }
 
-div.section-title {
+.section-title {
     text-align: center;
     font-size: 13pt;
     font-weight: bold;
@@ -61,7 +61,7 @@ div.section-title {
     letter-spacing: var(--title-letter-spacing);
 }
 
-div.skills {
+.skills {
 }
 
 .skills-group {
@@ -82,21 +82,21 @@ div.skills {
     white-space: pre;
 }
 
-div.employer-id {
+.employer-id {
     font-size: 12pt;
     letter-spacing: var(--title-letter-spacing);
     text-transform: uppercase;
 }
 
-div.employer-id .employer-name {
+.employer-id .employer-name {
     font-weight: bold;
 }
 
-div.employer-id .employer-location {
+.employer-id .employer-location {
     float: right;
 }
 
-div.employer-id .employer-date {
+.employer-id .employer-date {
     float: right;
     padding-left: 0.25em;
     letter-spacing: var(--title-letter-spacing);
@@ -106,52 +106,52 @@ div.employer-id .employer-date {
     margin-bottom: 14pt;
 }
 
-div.experience-employer .experience-position {
+.experience-employer .experience-position {
     margin-top: 8pt;
 }
 
-div.experience-employer .experience-position:first-of-type {
+.experience-employer .experience-position:first-of-type {
     margin-top: 1pt;
 }
 
-div.experience-employer .experience-positions {
+.experience-employer .experience-positions {
     margin-left: 14pt;
 }
 
-div.position-id {
+.position-id {
     font-size: 11pt;
     text-transform: uppercase;
     letter-spacing: var(--title-letter-spacing);
 }
 
-div.position-id .position-title {
+.position-id .position-title {
     font-weight: bold;
 }
 
-div.position-id .position-date {
+.position-id .position-date {
 }
 
 .experience-position .position-details {
 }
 
-div.position-details .details-group {
+.position-details .details-group {
     margin-top: 1pt;
     margin-bottom: 4pt;
 }
-div.position-details .details-group .group-name {
+.position-details .details-group .group-name {
     font-size: 11pt;
     letter-spacing: var(--title-letter-spacing);
     text-transform: uppercase;
 }
 
-div.position-details .details-group ul {
+.position-details .details-group ul {
     margin-top: initial;
     margin-bottom: initial;
 
     /* list-style-type: disc; */
 }
 
-div.position-details .details-group ul li {
+.position-details .details-group ul li {
     margin-top: 3pt;
     margin-bottom: 1pt;
     position: relative;
@@ -159,14 +159,14 @@ div.position-details .details-group ul li {
     line-height: 1.1;
 }
 
-div.position-details .details-group ul li::before {
+.position-details .details-group ul li::before {
     content: "•";
     position: absolute;
     left: -7pt;
     top: 0.1%;
 }
 
-div.education-item {
+.education-item {
     text-align: center;
     font-size: 11pt;
     text-transform: uppercase;
@@ -177,11 +177,11 @@ div.education-item {
         margin: 0;
     }
     {% if not url_query.dont_avoid_breaks -%}
-    div.employer-id, div.position-id {
+    .employer-id, .position-id {
         break-after: avoid-page;
     }
 
-    div.details-group, div.experience-position {
+    .details-group, .experience-position {
         /* color: blue; */
         break-inside: avoid-page;
     }
