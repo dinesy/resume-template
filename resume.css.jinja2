@@ -19,6 +19,24 @@ body {
     font-family: Calibri, sans-serif;
 }
 
+.section:first-of-type {
+    margin-top: initial;
+}
+
+.section {
+    margin-top: 9pt;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    line-height: 1.2;
+    letter-spacing: var(--title-letter-spacing);
+}
+
 .name {
     font-size: 18pt;
     font-weight: bold;
@@ -43,24 +61,6 @@ body {
     line-height: 1.3;
 }
 
-.section {
-    margin-top: 9pt;
-}
-
-.section:first-of-type {
-    margin-top: initial;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 13pt;
-    font-weight: bold;
-    text-transform: uppercase;
-
-    line-height: 1.2;
-    letter-spacing: var(--title-letter-spacing);
-}
-
 .skills {
 }
 
@@ -82,7 +82,11 @@ body {
     white-space: pre;
 }
 
-.employer-id {
+.experience-employer {
+    margin-bottom: 14pt;
+}
+
+.experience-employer .employer-id {
     font-size: 12pt;
     letter-spacing: var(--title-letter-spacing);
     text-transform: uppercase;
@@ -102,23 +106,19 @@ body {
     letter-spacing: var(--title-letter-spacing);
 }
 
-.experience-employer {
-    margin-bottom: 14pt;
-}
-
-.experience-employer .experience-position {
-    margin-top: 8pt;
+.experience-employer .experience-positions {
+    margin-left: 14pt;
 }
 
 .experience-employer .experience-position:first-of-type {
     margin-top: 1pt;
 }
 
-.experience-employer .experience-positions {
-    margin-left: 14pt;
+.experience-employer .experience-position {
+    margin-top: 8pt;
 }
 
-.position-id {
+.experience-position .position-id {
     font-size: 11pt;
     text-transform: uppercase;
     letter-spacing: var(--title-letter-spacing);
@@ -148,15 +148,8 @@ body {
     margin-top: initial;
     margin-bottom: initial;
 
-    /* list-style-type: disc; */
-}
-
-.position-details .details-group ul li {
-    margin-top: 3pt;
-    margin-bottom: 1pt;
-    position: relative;
-    list-style: none;
     line-height: 1.1;
+    /* list-style-type: disc; */
 }
 
 .position-details .details-group ul li::before {
@@ -164,6 +157,13 @@ body {
     position: absolute;
     left: -7pt;
     top: 0.1%;
+}
+
+.position-details .details-group ul li {
+    /* margin-top: 3pt; */
+    margin-bottom: 3pt;
+    position: relative;
+    list-style: none;
 }
 
 .education-item {
