@@ -1,19 +1,28 @@
-{%- macro render_details(details) %}
-    {%- if details is tuple %}<div class="details-group">
-    <div class="group-name">{{ details[0] }}</div>{{ render_details(details[1]) }}</div>
-    {%- elif details is list -%}
-    {%- for detail in details -%}
-        {%+ if detail and detail is not list +%}
-            {% if detail is not tuple %}{% if loop.first %}<ul>{% endif %}<li>{% endif -%}
-            {{ render_details(detail) }}
-            {%- if loop.nextitem is list %}{{ render_details(loop.nextitem) }}{% endif -%}
-            {%- if detail is not tuple %}</li>{% if loop.last %}</ul>{% endif %}{% endif -%}
-        {% endif -%}
-    {% endfor -%}
-    {%- else -%}
-    {{ details|convert_style }}
-    {%- endif +%}
+{% macro render_details(details) %}
+    {%- if details is list %}
+        {%- for detail in details recursive -%}
+            {% if detail is list %}
+                    <ul class="inner">
+                    {{ loop(detail)|trim }}
+                    </ul>
+            {%- elif detail is tuple -%}
+                {{ render_details(detail)|trim }}
+            {% else %}
+                    <li>{{ detail|convert_style }}</li>
+            {%- endif %}
+        {%- endfor %}
+    {%- elif details is tuple -%}
+        <div class="details-group">
+                <div class="group-name">{{ details[0] }}</div>
+                <ul class="in-group">
+                    {{ render_details(details[1])|trim }}
+                </ul>
+        </div>
+    {% else %}
+        {{ details|convert_style }}
+    {% endif %}
 {%- endmacro -%}
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -76,9 +85,11 @@
                             {%- set dash = joiner("-") -%}
                             ({%- if position.start_date -%}{{ position.start_date }}{{ dash() }}{%- endif -%}
                                 {%- if position.end_date -%}{{ dash() }}{{ position.end_date }}{%- endif -%})</span>
-                        {%- endif -%}
+                        {%- endif %}
                     </div>
-                    <div class="position-details">{{ render_details(position.details|prep_details) }}</div>
+                    <div class="position-details">
+                        {{ render_details(position.details|prep_details)|trim }}
+                    </div>
                 </div>
                 {% endfor -%}
             </div>
