@@ -176,7 +176,7 @@ body {
     .resume {
         margin: 0;
     }
-    {% if not url_query.dont_avoid_breaks -%}
+    {% if prevent_breaks -%}
     .employer-id, .position-id {
         break-after: avoid-page;
     }
