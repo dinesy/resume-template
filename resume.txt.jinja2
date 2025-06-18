@@ -1,0 +1,54 @@
+{%- macro render_details(details) -%}
+{%- if details is list %}
+{%- for detail in details recursive %}
+    {%- if detail is list %}{{ loop(detail) }}{# Recursive List #}
+    {%- elif detail is tuple %}{{ render_details(detail) }}{# Group Start #}
+    {%- else %}{{ " " * (indent_incr * loop.depth + 1)}}{{ bullet_char }} {{ detail }}{# bullet item #}
+{% endif -%}
+{%- endfor -%}
+{%- elif details is tuple %}  {{ details[0] }}{# group heading #}
+{{ render_details(details[1]) }}
+{%- else %}{{ details }}{# non bulletted list #}
+{%- endif %}
+{%- endmacro -%}
+
+{%- macro date_range(item, parens=False) -%}
+    {% if item.start_date or item.end_date %}
+    {%- set dash = joiner("-") -%}
+    {{ "(" if parens else "" }}
+    {%- if item.start_date %}{{ item.start_date }}{{ dash() }}{% endif -%}
+    {% if item.end_date %}{{ dash() }}{{ item.end_date }}{% endif -%}
+    {{ ")" if parens else "" }}
+    {%- endif %}
+{%- endmacro -%}
+{{ resume.personal.name }} - Resume
+
+{{ resume.personal.name }}  {{ resume.personal.contact.email }}  {{ resume.personal.contact.phone }}  {{ resume.personal.contact.urls.linkedin }}  {{ resume.personal.contact.address }}
+
+{{ resume.personal.tagline }}
+
+{{ resume.personal.summary }}
+
+
+CORE COMPETENCIES
+{%- for category, skills in resume.skills|prep_details %}
+{{ category }}: {{""}}
+{%- for skill in skills %}{{ skill }}{{" | " if not loop.last else ""}}{%- endfor %}
+{%- endfor %}
+
+
+==PROFESSIONAL EXPERIENCE==
+{%- for employer in resume.experience %}
+## {{ employer.company }}  --  {{ employer.location }}  --  {{ date_range(employer) }} ##
+{%- for position in employer.positions %}
+ [{{ position.title }} {{ date_range(position, parens=True) }}]
+{{ render_details(position.details|prep_details) }}
+{%- endfor %}
+{% endfor -%}
+
+
+==EDUCATION==
+{%- set marker = "* " if resume.education|count > 1 else "" %}
+{{ marker }}{% for item in resume.education -%}
+{{ item.school }} {{ item.location }} {{ item.degree }} {{ item.year }}
+{% endfor %}
