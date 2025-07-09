@@ -42,6 +42,9 @@ CORE COMPETENCIES
 ## {{ employer.company }}  --  {{ employer.location }}  --  {{ date_range(employer) }} ##
 {%- for position in employer.positions %}
  [{{ position.title }} {{ date_range(position, parens=True) }}]
+ {%- if position['sub-title'] %}
+   (Official Title: “{{ position['sub-title'] }}”)
+ {%- endif %}
 {{ render_details(position.details|prep_details) }}
 {%- endfor %}
 {% endfor -%}

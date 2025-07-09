@@ -86,6 +86,9 @@
                             ({%- if position.start_date -%}{{ position.start_date }}{{ dash() }}{%- endif -%}
                                 {%- if position.end_date -%}{{ dash() }}{{ position.end_date }}{%- endif -%})</span>
                         {%- endif %}
+                        {%- if position['sub-title'] -%}
+                        <div class="position-sub-title-line"><span class="position-sub-title-prefix">Official Title:</span> <span class="position-sub-title">&ldquo;{{ position['sub-title'] }}&rdquo;</span></div>
+                        {%- endif -%}
                     </div>
                     <div class="position-details">
                         {{ render_details(position.details|prep_details)|trim }}

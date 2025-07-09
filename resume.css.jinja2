@@ -127,6 +127,21 @@ body {
 .position-id .position-title {
     font-weight: bold;
 }
+.position-id .position-sub-title-line {
+    font-size: 9pt;
+    margin-left: 2ch;
+    margin-top: -3pt;
+    margin-bottom: 2pt;
+    &::before {
+        content: '\21b3  ';
+    }
+    &::before, .position-sub-title {
+        font-weight: bold;
+    }
+    .position-sub-title-prefix{
+        letter-spacing: calc(var(--title-letter-spacing) * 0.5);
+    }
+}
 
 .position-id .position-date {
 }
