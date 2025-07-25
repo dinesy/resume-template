@@ -23,7 +23,7 @@
 {%- endmacro -%}
 {{ resume.personal.name }} - Resume
 
-{{ resume.personal.name }}  {{ resume.personal.contact.email }}  {{ resume.personal.contact.phone }}  {{ resume.personal.contact.urls.linkedin }}  {{ resume.personal.contact.address }}
+{{ resume.personal.name }}  {{ resume.personal.contact.email }}  {{ resume.personal.contact.phone }}  {{ resume.personal.contact.urls.linkedin }}  {{ resume.personal.contact.location }}
 
 {{ resume.personal.tagline }}
 
@@ -42,8 +42,8 @@ CORE COMPETENCIES
 ## {{ employer.company }}  --  {{ employer.location }}  --  {{ date_range(employer) }} ##
 {%- for position in employer.positions %}
  [{{ position.title }} {{ date_range(position, parens=True) }}]
- {%- if position['sub-title'] %}
-   (Official Title: “{{ position['sub-title'] }}”)
+ {%- if position.sub_title %}
+   (Official Title: “{{ position.sub_title }}”)
  {%- endif %}
 {{ render_details(position.details|prep_details) }}
 {%- endfor %}

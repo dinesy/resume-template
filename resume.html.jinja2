@@ -39,7 +39,7 @@
             <span class="item email">{{ resume.personal.contact.email }}</span> &#9679;
             <span class="item phone">{{ resume.personal.contact.phone }}</span> &#9679;
             <span class="item linkedin">{{ resume.personal.contact.urls.linkedin }}</span> &#9679;
-            <span class="item address">{{ resume.personal.contact.address }}</span>
+            <span class="item address">{{ resume.personal.contact.location }}</span>
         </div>
     </div>
     <div class="section tagline">
@@ -86,8 +86,8 @@
                             ({%- if position.start_date -%}{{ position.start_date }}{{ dash() }}{%- endif -%}
                                 {%- if position.end_date -%}{{ dash() }}{{ position.end_date }}{%- endif -%})</span>
                         {%- endif %}
-                        {%- if position['sub-title'] -%}
-                        <div class="position-sub-title-line"><span class="position-sub-title-prefix">Official Title:</span> <span class="position-sub-title">&ldquo;{{ position['sub-title'] }}&rdquo;</span></div>
+                        {%- if position.sub_title -%}
+                        <div class="position-sub-title-line"><span class="position-sub-title-prefix">Official Title:</span> <span class="position-sub-title">&ldquo;{{ position.sub_title }}&rdquo;</span></div>
                         {%- endif -%}
                     </div>
                     <div class="position-details">
