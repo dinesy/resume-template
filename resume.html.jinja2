@@ -28,7 +28,7 @@
 <html>
     <head>
         <title>{{ resume.personal.name }} - Resume</title>
-        <link rel="stylesheet" href="{{ docname }}.css?{{ url_query_str }}">
+        <link rel="stylesheet" href="{{ docname }}.css{{ '?' + url_query_str if url_query_str else '' }}">
     </head>
     <body class="resume">
     <div class="section personal">
