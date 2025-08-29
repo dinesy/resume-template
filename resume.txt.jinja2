@@ -39,7 +39,7 @@ CORE COMPETENCIES
 
 ==PROFESSIONAL EXPERIENCE==
 {%- for employer in resume.experience %}
-## {{ employer.company }}  --  {{ employer.location }}  --  {{ date_range(employer) }} ##
+## {{ employer.company }}  —  {{ employer.location }}  —  {{ date_range(employer) }} ##
 {%- for position in employer.positions %}
  [{{ position.title }} {{ date_range(position, parens=True) }}]
  {%- if position.sub_title %}
