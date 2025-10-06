@@ -18,6 +18,7 @@
                     {{ render_details(details[1])|trim }}
                 </ul>
         </div>
+    {%- elif details is none -%}
     {% else %}
         {{ details|convert_style }}
     {% endif %}

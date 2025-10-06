@@ -8,6 +8,7 @@
 {%- endfor -%}
 {%- elif details is tuple %}  {{ details[0] }}{# group heading #}
 {{ render_details(details[1]) }}
+{%- elif details is none %}
 {%- else %}{{ details }}{# non bulletted list #}
 {%- endif %}
 {%- endmacro -%}
