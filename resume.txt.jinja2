@@ -13,6 +13,12 @@
 {%- endif %}
 {%- endmacro -%}
 
+{%- macro has_date(item, content) -%}
+    {%- if item.start_date or item.end_date %}
+        {%- if content %}{{ content }}{% endif %}
+    {%- endif %}
+{%- endmacro -%}
+
 {%- macro date_range(item, parens=False) -%}
     {% if item.start_date or item.end_date %}
     {%- set dash = joiner("-") -%}
@@ -40,9 +46,9 @@ CORE COMPETENCIES
 
 ==PROFESSIONAL EXPERIENCE==
 {%- for employer in resume.experience %}
-## {{ employer.company }}  —  {{ employer.location }}  —  {{ date_range(employer) }} ##
+## {{ employer.company }}  —  {{ employer.location }}{{has_date(employer, "  —  " + date_range(employer)) }} ##
 {%- for position in employer.positions %}
- [{{ position.title }} {{ date_range(position, parens=True) }}]
+ [{{ position.title }}{{ has_date(position, " " + date_range(position, parens=True)) }}]
  {%- if position.sub_title %}
    (Official Title: “{{ position.sub_title }}”)
  {%- endif %}
